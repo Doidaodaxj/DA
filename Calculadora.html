@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <style>
+    /* Estilos básicos para centralizar e dar formatação à calculadora */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #display {
+      width: 100%;
+      height: 40px;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      text-align: right;
+      padding-right: 10px;
+    }
+    button {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2em;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .btn-wide {
+      width: 220px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <br>
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+    <button onclick="appendValue('/')">/</button>
+    <br>
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button onclick="appendValue('*')">*</button>
+    <br>
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button onclick="appendValue('-')">-</button>
+    <br>
+    <button onclick="appendValue('0')">0</button>
+    <button onclick="appendValue('.')">.</button>
+    <button onclick="calculateResult()">=</button>
+    <button onclick="appendValue('+')">+</button>
+    <br>
+    <button class="btn-wide" onclick="clearDisplay()">C</button>
+  </div>
+
+  <script>
+    // Função para adicionar valores ao display
+    function appendValue(value) {
+      document.getElementById('display').value += value;
+    }
+
+    // Função para limpar o display
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    // Função para calcular o resultado da expressão
+    function calculateResult() {
+      try {
+        // O 'eval' executa a string como uma expressão matemática
+        var result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+      } catch (e) {
+        document.getElementById('display').value = 'Erro';
+      }
+    }
+  </script>
+</body>
+</html>
